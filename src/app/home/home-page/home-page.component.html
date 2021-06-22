@@ -1,0 +1,6 @@
+<div class="main-container">
+  <div class="module" *ngFor="let module of modules" [routerLink]="module.link">
+    <div><mat-icon>{{module.matIcon}}</mat-icon></div>
+    <div class="title">{{module.title}} </div>
+  </div>
+</div>

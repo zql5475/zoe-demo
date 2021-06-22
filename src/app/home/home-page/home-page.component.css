@@ -1,0 +1,42 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.module:hover {
+    border: 1px solid #014F73;
+    color: #014F73;
+    cursor: pointer;
+}
+
+.module .title {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.module .description {
+    font-size: 12px;
+    text-align: center;
+}
+
+mat-icon {
+    height: 70px;
+    width: 70px;
+    font-size: 70px;
+    margin-top: 20px;
+}
+    
+.module {
+    background: #E9E9E9;
+    border: 1px solid #E9E9E9;
+    height: 200px;
+    width: 300px;
+    padding: 40px;
+    margin: 10px;
+    border-radius: 6px;
+    text-align: center;
+    color: grey;
+}

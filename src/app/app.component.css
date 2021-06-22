@@ -1,0 +1,31 @@
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.header {
+    padding: 20px 40px;
+}
+
+.footer {
+    color: #fff;
+    padding: 25px;
+    height: auto;
+    font: unset;
+}
+
+.home-icon {
+    position: absolute;
+    left: 10px;
+}
+
+.signout-icon {
+    position: absolute;
+    right: 10px;
+}
+ 
+.home-icon:hover, .signout-icon:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<a *ngIf="!searchResults" mat-button class="refresh-icon" (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+</a>
+<a *ngIf="searchResults" mat-button class="back-icon" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+</a>
+<table *ngIf="dataSource" mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="license">
+        <th mat-header-cell *matHeaderCellDef>License</th>
+        <td mat-cell *matCellDef="let element"><span *ngIf="element.license_name" [ngClass]="{
+            'is-green': !element.license_name.includes('General'),
+            'is-yellow': element.license_name.includes('General')
+        }">{{element.license_name}}
+        </span></td>
+    </ng-container>
+    <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Created At</th>
+        <td mat-cell *matCellDef="let element">{{element.created_at}}</td>
+    </ng-container>
+    <ng-container matColumnDef="watchersCount">
+        <th mat-header-cell *matHeaderCellDef>Watchers Count</th>
+        <td mat-cell *matCellDef="let element">{{element.watchers_count}}</td>
+    </ng-container>
+    <ng-container matColumnDef="language">
+        <th mat-header-cell *matHeaderCellDef>Language</th>
+        <td mat-cell *matCellDef="let element">{{element.language}}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element"><mat-icon [matTooltip]="'Search similar repositories based on description'" *ngIf="element.license_name.includes('General')" style="cursor: pointer;" (click)="searchRepositories(element)">search</mat-icon></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">
+            No search results found
+        </td>
+    </tr>
+</table>
+<div *ngIf="!dataSource" class="loading-indicator">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
